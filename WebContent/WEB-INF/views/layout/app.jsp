@@ -9,9 +9,25 @@
         <link rel="stylesheet" href="<c:url value='/css/style.css' />">
     </head>
     <body>
-        <div id="wrapper">
+    <div id="wrapper">
+            <c:choose>
+             <c:when test="${sessionScope.login_employee == null}">
             <div id="header">
-                <div id="header_menu">
+            </c:when>
+         <c:when test="${sessionScope.login_employee.admin_flag == 0}">
+            <div id="header_0">
+            </c:when>
+             <c:when test="${sessionScope.login_employee.admin_flag == 1}">
+             <div id="header_1">
+            </c:when>
+             <c:when test="${sessionScope.login_employee.admin_flag == 2}">
+            <div id="header_2">
+            </c:when>
+             <c:when test="${sessionScope.login_employee.admin_flag == 3}">
+            <div id="header_3">
+            </c:when>
+            </c:choose>
+            <div id="header_menu">
                     <h1><a href="<c:url value='/' />">日報管理システム</a></h1>&nbsp;&nbsp;&nbsp;
                     <c:if test="${sessionScope.login_employee != null}">
                         <c:if test="${sessionScope.login_employee.admin_flag == 1}">
@@ -33,6 +49,6 @@
             <div id="footer">
                 by Taro Kirameki.
             </div>
-        </div>
+</div>
     </body>
 </html>
